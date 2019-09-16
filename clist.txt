@@ -1,0 +1,647 @@
+sw_checklist: CHECKLIST  - v0.1.a
+sw_itemvoid:   ===================
+sw_itemvoid:      For the HotStart TBM 900
+sw_itemvoid:             by Chuck Tessein
+sw_itemvoid:   ===================
+
+sw_checklist:MAINTENANCE, LOAD & FUEL
+sw_itemvoid:*** Maintenance Manager***
+sw_item:Maintenance manager|USE MENU
+sw_itemvoid:---------------
+sw_item:Open all doors|ALL DOORS OPENED:(tbm900/doors/front_cargo:1)&&(tbm900/doors/pilot:>0.5)&&(tbm900/doors/main:>0.5)
+sw_itemvoid:
+sw_item:Remove all protections|ALL PROTECTIONS REMOVED:(tbm900/anim/engine/tied:0)&&(tbm900/anim/wing/wingtip_wick_flag[0]:0)&&(tbm900/anim/wing/pitot_cover[0]:0)&&(tbm900/anim/tail/static_cover[0]:0)
+sw_item:Remove chocks|CHOCKS REMOVED:tbm900/switches/gear/chocks:0
+sw_itemvoid:
+sw_item:Open both fuel tank caps|BOTH FUEL TANK CAPS OPEN:(tbm900/anim/wing/fuel_cap[0]:1)&&(tbm900/anim/wing/fuel_cap[1]:1)
+sw_item:... refuel as necessary|REFUELED:(sim/cockpit2/fuel/fuel_quantity[0]:><0.1)||(sim/cockpit2/fuel/fuel_quantity[1]:><0.1)
+sw_item:... close both tank caps|BOTH TANK CAPS CLOSED:(tbm900/anim/wing/fuel_cap[0]:0)&&(tbm900/anim/wing/fuel_cap[1]:0)
+sw_itemvoid:
+sw_item:*** Load aircraft ***|AIRCRAFT LOADED:sim/flightmodel/weight/m_total:><0.01
+sw_itemvoid:
+sw_item:Connect GROUND POWER UNIT|GROUND POWER UNIT CONNECTED:tbm900/doors/gpu:1.0
+sw_itemvoid:
+sw_itemvoid:Enter aircraft
+sw_item:... close all doors|CLOSED:(tbm900/doors/front_cargo:0)&&(tbm900/doors/pilot:0)&&(tbm900/doors/main:0)
+sw_itemvoid:
+sw_itemvoid: *** Next: Initial Cockpit Check
+sw_continue:INITIAL COCKPIT CHECK
+
+sw_checklist:INITIAL COCKPIT CHECK:Initial Cockpit Check
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_itemvoid:  All switches and levers down except for ignition, which is always auto
+sw_item:All switches & levers DOWN|DOWN:(tbm900/switches/lights/landing_lights:0)&&(tbm900/switches/lights/pulse_syst:0)&&(sim/cockpit2/switches/navigation_lights_on:0)&&(sim/cockpit2/switches/strobe_lights_on:0)&&(tbm900/switches/lights/dimmer:0)&&(tbm900/switches/lights/cabin_lights:0)&&(tbm900/switches/elec/emerg_handle:1)&&(tbm900/switches/elec/starter:0)&&(tbm900/switches/fuel/aux_bp:0)&&(tbm900/switches/fuel/auto_man:1)&&(tbm900/switches/elec/ap_trims:0)
+sw_item:EMERGENCY LOCATOR TRANSMITTER OFF|EMERGENCY LOCATOR TRANSMITTER OFF:tbm900/switches/elec/elt:1
+sw_item:Pilot OXYGEN switch OFF| PILOT OXYGEN OFF:tbm900/switches/oxygen/master:0
+sw_item:PASSENGER OXYGEN switch OFF|PASSENGER OXYGEN OFF:tbm900/switches/oxygen/pax:0
+sw_itemvoid:
+sw_itemvoid:*** ON DE-ICE PANEL
+sw_item:All DE-ICE SWITCHES DOWN|ALL DE-ICE SWITCHES DOWN:(tbm900/switches/ice/airframe_deice:0)&&(tbm900/switches/ice/ice_lights:0)&&(tbm900/switches/ice/prop_deice:0)&&(tbm900/switches/ice/ws_heat:0)&&(tbm900/switches/ice/pitot_l:0)&&(tbm900/switches/ice/pitot_r:0)&&(tbm900/switches/ice/inert_sep:0)
+sw_itemvoid:
+sw_itemvoid:Depress full toe brakes
+sw_item:SET parking brake|PARKING BRAKE SET:tbm900/switches/gear/park_brake:1
+sw_item:Landing gear lever DOWN|LANDING GEAR DOWN:tbm900/switches/gear/handle:1
+sw_item:Throttle lever CUT OFF|THROTTLE CUT OFF:tbm900/systems/engine/range:0
+sw_item:FUEL MANUAL OVERRIDE BACKWARD| MANUAL OVERRIDE BACKWARD:tbm900/controls/engine/emerg_power:0
+sw_item:Fuel tank selector LEFT OR RIGHT|FUEL SELECTED:(tbm900/switches/fuel/fuel_sel:1)||(tbm900/switches/fuel/fuel_sel:2)
+sw_item:FLAPS UP|FLAPS UP:tbm900/anim/flaps_lever:0.0
+sw_itemvoid:
+sw_itemvoid:*** ON ECS PANEL
+sw_item:AIR CONDITIONING switch OFF|AIR CONDITIONING OFF:tbm900/switches/ecs/ac_mode:0
+sw_item:BLEED switch OFF| BLEED OFF/RST:tbm900/switches/ecs/bleed_mode:0
+sw_itemvoid:
+sw_item:Alternate static air PUSHED|ALTERNATE STATIC AIR PUSHED:sim/cockpit2/switches/alternate_static_air_ratio:0
+sw_item:Emergency ram air PUSHED|EMERGENCY RAM AIR PUSHED:tbm900/switches/ecs/ram_air_intake:0
+sw_itemvoid:
+sw_itemvoid:*** ON CIRCUIT BREAKERS PANEL
+sw_item:ESSENTIAL BUS TIE switch and cover ON|BUS TIE SWITCH ON and GUARDED:(tbm900/switches/elec/ess_bus_tie:0)&&(tbm900/switches/elec/ess_bus_tie_cover:0)
+sw_item:All circuit breakers PUSHED|CIRCUIT BREAKERS PUSHED
+sw_itemvoid:
+sw_itemvoid: *** Next: Establishing Electrical Power
+sw_continue:ESTABLISHING ELECTRICAL POWER
+
+sw_checklist:ESTABLISHING ELECTRICAL POWER:Establishing Electrical Power
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_item:Crash lever UP|LEVER UP:tbm900/switches/elec/emerg_handle:0
+sw_item:SOURCE selector switch GPU|SOURCE SELECTOR GPU:tbm900/switches/elec/source:2
+sw_item:GENERATOR switch MAIN|MAIN:tbm900/switches/elec/generator:1
+sw_item:INTERIOR LIGHTS dim panel|ADJUST:tbm900/knobs/lights/panel_brt:><0.01
+sw_itemvoid:
+sw_item:*** CHECK CREW ALERTING SYSTEM MESSAGES ON MFD|CHECK
+sw_itemvoid:- Park brake, Fuel press & Oil press|RED
+sw_itemvoid:- GPU door, Auto sel, Vacuum low|YELLOW
+sw_item:Battery > 24.5 VOLTS|BATTERY OK:sim/cockpit2/electrical/battery_voltage_indicated_volts[0]:>24.5
+sw_itemvoid:
+sw_item:[ATC] FILE FLIGHT PLAN|PLAN FILED
+sw_itemvoid:
+sw_itemvoid:*** LANDING GEAR PANEL 
+sw_item:CHECK DOWN & LIGHT push-button|PUSH & TEST:(tbm900/switches/gear/lts_test:1)||(tbm900/switches/gear/down_check:1)
+sw_itemvoid:
+sw_itemvoid:*** DE-ICE PANEL 
+sw_item:LTS TEST push-button|PUSH & TEST:tbm900/switches/ice/lts_test:1
+sw_itemvoid:
+sw_itemvoid: *** Next: Pre-start configuration
+sw_continue:PRE-START CONFIGURATION
+
+sw_checklist:PRE-START CONFIGURATION:Pre-start configuration
+sw_item:CHECK Throttle CUT OFF|THROTTLE CUTOFF:tbm900/systems/engine/range:0
+sw_itemvoid:
+sw_itemvoid: ! ! !   IF ENGINE MOTORING NEEDED   ! ! !
+sw_itemvoid: => see SPECIAL - Engine motoring
+sw_itemvoid:
+sw_item: ! ! !   IF ENGINE IS TOO HOT (ITT >150)   ! ! !|CHECK ITT <150:sim/cockpit2/engine/indicators/ITT_deg_C[0]:<150
+sw_itemvoid: => if >150 see SPECIAL - Cool engine before start
+sw_itemvoid:
+sw_item:[ATC] REQUEST ENGINE START|ENGINE START REQUESTED
+sw_itemvoid:
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_item:STROBE light switch ON|STROBE LIGHT ON:sim/cockpit2/switches/strobe_lights_on:1
+sw_item:IGNITION switch AUTO|IGNITION AUTO:tbm900/switches/elec/ignition:2
+sw_item:AUXILIARY BATTERY switch ON|AUXILIARY BATTERY SWITCH ON:tbm900/switches/fuel/aux_bp:1
+sw_itemvoid:
+sw_itemvoid: *** Next: Start initiation and fuel introduction
+sw_continue:START INITIATION AND FUEL INTRODUCTION
+
+sw_checklist:START INITIATION AND FUEL INTRODUCTION:Start initiation and fuel introduction
+sw_item:ITT must be < 150d|CHECK:sim/cockpit2/engine/indicators/ITT_deg_C[0]:<150
+sw_itemvoid:
+sw_item:Start timer on PFD|TIMER STARTED:sim/time/timer_is_running_sec:1
+sw_item:STARTER switch ON| START SWITCH ON 2 SECOND:tbm900/switches/elec/starter:1
+sw_itemvoid:***  Engine must start within 5 sec
+sw_itemvoid:
+sw_itemvoid:*** WITHIN 20 SEC
+sw_item:Wait until NG is greater than 13%|NG EXCEEDS 13%:sim/flightmodel/engine/ENGN_N1_[0]:>13
+sw_item:Throttle to LOW IDLE|LOW IDLE:tbm900/systems/engine/range:1
+sw_itemvoid:
+sw_itemvoid:*** WITHIN 40 SECONDS
+sw_item:Wait UNTIL NG IS 52% (+- 2%)|NG IS 52%:sim/flightmodel/engine/ENGN_N1_[0]:>52
+sw_item:Throttle HIGH IDLE|HIGH IDLE:tbm900/systems/engine/range:2
+sw_item:Throttle FLIGHT IDLE|FLIGHT IDLE:tbm900/systems/engine/range:3
+sw_item:STARTER switch automatically OFF|START SWITCH OFF:tbm900/switches/elec/starter:0
+sw_item:Stop timer|RESET & STOP Timer:sim/time/timer_is_running_sec:0
+sw_itemvoid:
+sw_itemvoid: *** Next: After start configuration
+sw_continue:AFTER START CONFIGURATION
+
+sw_checklist:AFTER START CONFIGURATION:After start configuration
+sw_item:SOURCE selector switch BATTERY|BATTERY:tbm900/switches/elec/source:1
+sw_item:Disconnect GROUND POWER UNIT|GPU DISCONNECTED:tbm900/doors/gpu:0.0
+sw_item:CHECK Battery > 24.5 VOLTS|BATTERY CHECKS:sim/cockpit2/electrical/battery_voltage_indicated_volts[0]:>19.0
+sw_itemvoid:
+sw_item:Throttle|FLIGHT IDLE:tbm900/systems/engine/range:3
+sw_item:Engine parameters|CHECK:(sim/flightmodel/engine/ENGN_TRQ[0]:230|350)&&(sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1050|1250)&&(sim/cockpit2/engine/indicators/ITT_deg_C[0]:500|700)
+sw_itemvoid:
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_item:AUXILIARY BATTERY SWITCH switch AUTO|AUXILIARY BATTERY SWITCH AUTO:tbm900/switches/fuel/aux_bp:2
+sw_item:FUEL SELECTOR switchAUTO|FUELS SELECTOR AUTO:tbm900/switches/fuel/auto_man:0
+sw_item:AUTOPILOT TRIMS switch ON|AUTOPILOT ON:tbm900/switches/elec/ap_trims:2
+sw_item:Pilot OXYGEN switch ON|PILOT OXYGEN ON:tbm900/switches/oxygen/master:1
+sw_itemvoid:
+sw_itemvoid:*** ON DE-ICE PANEL
+sw_item:INERTIAL SEPARATOR switch ON|INERTIAL SEPARATOR ON:tbm900/switches/ice/inert_sep:1
+sw_itemvoid:
+sw_itemvoid:*** ON ECS PANEL
+sw_item:AIR CONDITIONING switch AUTO|AIR CONDITIONING SWITCH AUTO:tbm900/switches/ecs/ac_mode:2
+sw_item:BLEED switch AUTO|BLEED AUTO:tbm900/switches/ecs/bleed_mode:1
+sw_item:PRESSURE MODE AUTO|PRESSURE MODE AUTO:tbm900/switches/ecs/pres_mode:1
+sw_item:TEMPERATURE selector|TEMPERATURE ADJUSTED:tbm900/switches/ecs/temp_sel:><0.01
+sw_itemvoid:
+sw_item:Radar mode softkey (MFD)|RADAR MODE STANDBY
+sw_itemvoid:
+sw_item:Electrical and fuel network (MFD/SYSTEM)|CHECK 
+sw_itemvoid:
+sw_itemvoid: *** Next: Before taxi
+sw_continue:BEFORE TAXI
+
+sw_checklist:BEFORE TAXI:Before taxi
+sw_item:G1000 HEADING bug|HEADING ALIGN TO RUNWAY:sim/cockpit/autopilot/heading:><0.01
+sw_item:G1000 altimeter SET|SET ALTIMETER:sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot:><0.01
+sw_item:ESI altimeter SET|SET STANDBY ALTIMETER:(tbm900/esi2000/softkey2:!0)||(tbm900/esi2000/softkey3:!0)
+sw_item:Transponder SET STANDBY|TRANSPONDER STANDBY:sim/cockpit/radios/transponder_mode:1
+sw_item:Transponder set code|Transponder code SET:sim/cockpit/radios/transponder_code:><1
+sw_item:Set Initial altitude|Initial altitude set
+sw_item:Set takeoff heading|Takeoff heading set
+sw_item:Set Autopilot Climb speed|Climb speed set
+sw_item:Press Autopilot heading button
+sw_item:G1000 parameters (PFD & MFD)|CONFIGURED
+sw_itemvoid:
+sw_item: Enter and verify flight plan|Flight plan verified
+sw_item:Landing field elevation feet destination (MFD/SYSTEM)|DESTINATION ALTITUDE SET
+sw_itemvoid:
+sw_itemvoid: *** Next: Taxi
+sw_continue:TAXI
+
+sw_checklist:TAXI:Taxi
+sw_item:[ATC] REQUEST TAXI|REQUEST
+sw_itemvoid:
+sw_item:TAXI light switch|ON:sim/cockpit/electrical/taxi_light_on:1
+sw_item:NAV light switch|ON:sim/cockpit/electrical/nav_lights_on:1
+sw_item:Transponder|ON:sim/cockpit/radios/transponder_mode:2
+sw_itemvoid:
+sw_item:Throttle (toggle reverse)|TAXI RANGE:tbm900/systems/engine/range:4
+sw_itemvoid:
+sw_item:Parking brake|RELEASE:tbm900/switches/gear/park_brake:0
+sw_itemvoid:
+sw_item:Toe brakes|TEST:(sim/cockpit2/controls/left_brake_ratio:>0.05)||(sim/cockpit2/controls/right_brake_ratio:>0.05)
+sw_item:Turn indicator and HSI|CHECK MOVING:sim/flightmodel/misc/turnrate_noroll:><10.0
+sw_itemvoid:
+sw_itemvoid:*** Go to holding point|GO
+sw_item:   ... & set parking brake|SET:tbm900/switches/gear/park_brake:1
+sw_itemvoid:
+sw_itemvoid: *** Next : BEFORE TAKEOFF
+sw_continue:BEFORE TAKEOFF
+
+sw_checklist:RUNUP CHECK 1/2:Runup check
+sw_item:Throttle FLIGHT IDDLE|FLIGHT IDDLE:sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1100|1200
+sw_itemvoid:
+sw_item:PITOT LEFT & PITOT RIGHT & STALL HEATERS ON|PITOT HEATERS ON:(tbm900/switches/ice/pitot_l:1)&&(tbm900/switches/ice/pitot_r:1)
+sw_itemvoid:
+sw_itemvoid:*** FEATHER THE PROPELLER
+sw_item:PROP 1100-1200 RPMPROP RPM |CHECK:sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1100|1200
+sw_item:Throttle HIGH IDLE|HIGH IDLE:tbm900/systems/engine/range:2
+sw_item:- RPM drop to 400-500 RPM|CHECK:sim/cockpit2/engine/indicators/prop_speed_rpm[0]:400|500
+sw_item:Throttle FLIGHT IDLE|FLIGHT IDLE:tbm900/systems/engine/range:3
+sw_item:- RPM raise to 1100-1200 RPM|CHECK:sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1100|1200
+sw_itemvoid:
+sw_itemvoid:*** ENGINE PARAMETERS CHECK
+sw_item:Propeller 1100-1200 RPM|CHECK:sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1100|1200
+sw_item:NG value 68% +-2%|CHECK:sim/flightmodel/engine/ENGN_N1_[0]:66.44|69.36
+sw_item:ITT < 840d|CHECK:sim/cockpit2/engine/indicators/ITT_deg_C[0]:<840
+sw_item:Oil pressure|GREEN RANGE:sim/cockpit2/engine/indicators/oil_pressure_psi[0]:105|135
+sw_item:Oil temperature|GREEN RANGE:sim/flightmodel/engine/ENGN_oil_temp_c[0]:0|104
+sw_item:Battery charge <50 amps|GREEN RANGE:sim/cockpit2/electrical/bus_load_amps[0]:<50
+sw_item:CAS message|AS EXPECTED
+sw_itemvoid:
+sw_itemvoid: *** Next : Runup check 2/2
+sw_continue:RUNUP CHECK 2/2
+
+sw_checklist:RUNUP CHECK 2/2
+sw_itemvoid:*** DE-ICE TEST
+sw_item:All de-ice switches|ON:(tbm900/switches/ice/airframe_deice:1)&&(tbm900/switches/ice/prop_deice:1)&&(tbm900/switches/ice/ws_heat:1)&&(tbm900/switches/ice/pitot_l:1)&&(tbm900/switches/ice/pitot_r:1)
+sw_itemvoid:... test AMPS consumption
+sw_item:All de-ice switches...|OFF:(tbm900/switches/ice/airframe_deice:0)&&(tbm900/switches/ice/prop_deice:0)&&(tbm900/switches/ice/ws_heat:0)&&(tbm900/switches/ice/pitot_l:1)&&(tbm900/switches/ice/pitot_r:1)&&(tbm900/switches/ice/inert_sep:1)
+sw_item: ... Except PITOT L&R & INERT SEP|CHECK:(tbm900/switches/ice/pitot_l:1)&&(tbm900/switches/ice/pitot_r:1)&&(tbm900/switches/ice/inert_sep:1)
+sw_itemvoid:
+sw_itemvoid:*** GENERATOR TEST
+sw_item:Generator|OFF:tbm900/switches/elec/generator:0
+sw_itemvoid:=> check CAS message
+sw_itemvoid:=> check drop to ~25.6 volt
+sw_item:Generator|ST-BY:tbm900/switches/elec/generator:2
+sw_itemvoid:=> check CAS message
+sw_itemvoid:=> check AMPS and voltage
+sw_item:Generator|ON:tbm900/switches/elec/generator:1
+sw_itemvoid:
+sw_itemvoid:*** FLAPS TEST
+sw_item:=> lower flaps|FULL DOWN:(sim/flightmodel/controls/wing1l_fla1def:35)&&(sim/flightmodel/controls/wing1r_fla1def:35)
+sw_itemvoid:=> check flaps on MFD
+sw_item:=> raise flaps|FULL UP:(sim/flightmodel/controls/wing1l_fla1def:0)&&(sim/flightmodel/controls/wing1r_fla1def:0)
+sw_itemvoid:=> check flaps on MFD
+sw_itemvoid:
+sw_item:Engine parameters|CHECK:(sim/flightmodel/engine/ENGN_TRQ[0]:230|320)&&(sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1100|1200)&&(sim/cockpit2/engine/indicators/ITT_deg_C[0]:500|700)
+sw_item:All breakers|IN
+sw_itemvoid:
+sw_itemvoid: *** Next : Before takeoff
+sw_continue:BEFORE TAKEOFF
+
+sw_checklist:BEFORE TAKEOFF:Before takeoff
+sw_item:Controls|FULL & FREE:(sim/flightmodel2/wing/aileron1_deg[0]:><0.3)||(sim/flightmodel2/wing/elevator1_deg[0]:><0.3)||(sim/flightmodel2/wing/rudder1_deg[0]:><0.3)
+sw_item:Flaps SET TO TAKEOFF|FLAPS TAKEOFF:sim/flightmodel/controls/wing1r_fla1def:10.0
+sw_itemvoid:
+sw_item:Landing light switch ON|LANDING LIGHTS ON:sim/cockpit/electrical/landing_lights_on:1
+sw_item:De-ice panel AS REQUIRED|AS REQUIRED
+sw_itemvoid:
+sw_item:Aileron trim NEUTRAL|NEUTRAL:sim/cockpit2/controls/aileron_trim:-0.04|0.04
+sw_item:Elevator trim TAKEOFF|ELEVATOR TRIMMED TO TAKEOFF:tbm900/actuators/elevator_trim:0.207|0.262
+sw_item:Rudder trim middle white & green mark|RUDDER TRIM SET:sim/cockpit2/controls/rudder_trim:><0.01
+sw_itemvoid:
+sw_item:CHECK CREW ALERTING SYSTEM display messages|MESSAGES AS EXPECTED
+sw_itemvoid:
+sw_item:[ATC] REQUEST TAKEOFF|TAKEOFF REQUESTED
+sw_itemvoid:
+sw_item:Throttle (toggle reverse)|TAXI RANGE:tbm900/systems/engine/range:4
+sw_itemvoid:
+sw_item:RELEASE parking brake|BRAKES RELEASED:tbm900/switches/gear/park_brake:0
+sw_itemvoid:*** Go to line up|GO
+sw_item:LINE UP AND WAIT AND set parking brake| PARKING BRAKE SET:tbm900/switches/gear/park_brake:1
+sw_itemvoid:
+sw_itemvoid: *** Next : Takeoff
+sw_continue:TAKEOFF
+
+sw_checklist:TAKEOFF:Takeoff
+sw_itemvoid:*** TORQUE 90-100%
+sw_itemvoid:*** ROTATE SPEED 90 KIAS
+sw_itemvoid:*** INITIAL CLIMB SPEED 95 KIAS
+sw_itemvoid:
+sw_item:Headset equipment ON HEAD|ON HEAD:tbm900/sound/headset_on:1
+sw_itemvoid:
+sw_item:Transponder SET ALTITUDE MODE|ALTITUDE MODE SETT:sim/cockpit/radios/transponder_mode:3
+sw_item:G1000 HEADING BUG ALIGNED TO RUNWAY|ALIGNED TO RUNWAY:sim/cockpit/autopilot/heading:><0.01
+sw_itemvoid:
+sw_itemvoid:*** LEFT SIDE OF THROTTLE LEVER
+sw_item:TOGA push-button|TOGA PUSHED:sim/cockpit2/autopilot/flight_director_pitch_deg:+>2
+sw_itemvoid:
+sw_item:*** Autopilot and SID|OK
+sw_itemvoid:
+sw_item:Increase throttle until RPM in green range|1950~2000:sim/cockpit2/engine/indicators/prop_speed_rpm[0]:1950|2050
+sw_item: => Oil pressure in green range|CHECK:sim/cockpit2/engine/indicators/oil_pressure_psi[0]:105|135
+sw_item: => Oil temperature in green range|CHECK:sim/flightmodel/engine/ENGN_oil_temp_c[0]:0|104
+sw_item: => ITT in green range|CHECK:sim/cockpit2/engine/indicators/ITT_deg_C[0]:<840
+sw_itemvoid:
+sw_item:RELEASE Parking brake|PARKING RELEASED:tbm900/switches/gear/park_brake:0
+sw_itemvoid:
+sw_item:Increase Throttle to 80%|THROTTLE 70-98%:sim/flightmodel/engine/ENGN_TRQ[0]:2100|2969
+sw_item: => ITT in green range|CHECK:sim/cockpit2/engine/indicators/ITT_deg_C[0]:<840
+sw_itemvoid:
+sw_item:> 90 KNOTS INDICATED AIRSPEED|ROTATE:sim/flightmodel/position/indicated_airspeed:>90
+sw_item:takeoff|TAKEOFF:sim/flightmodel2/gear/on_ground[0]:0.0
+sw_itemvoid:
+sw_itemvoid: *** Next : After takeoff
+sw_continue:AFTER TAKEOFF
+
+sw_checklist:AFTER TAKEOFF:After Takeoff
+sw_itemvoid:*** INITIAL CLIMB SPEED 115 KIAS
+sw_itemvoid:*** STALL SPEED (FLAPS T/O) 95 KIAS
+sw_itemvoid:
+sw_itemvoid:*** WHEN AIRBORNE
+sw_item:- Apply toe brakes|TOE BRAKES:(sim/cockpit2/controls/right_brake_ratio:>0.05)||(sim/cockpit2/controls/left_brake_ratio:>0.05)
+sw_item:- Gear UP BEFORE 150 kias|GEAR UP:tbm900/switches/gear/handle:0
+sw_itemvoid:
+sw_item:Increase speed|>115 KTS:sim/flightmodel/position/indicated_airspeed:>115
+sw_item:Flaps UP|FLAPS UP:sim/flightmodel/controls/wing1r_fla1def:0.0
+sw_item:Yaw damper ON|ON:sim/cockpit2/switches/yaw_damper_on:1
+sw_item:LDG light switch OFF|OFF:tbm900/switches/lights/landing_lights:0
+sw_itemvoid:
+sw_itemvoid:*** PASSING ABOVE 1500 FT/AGL
+sw_item:INERTIAL SEPARATOR switch|INERTIAL SEPARATOR OFF:tbm900/switches/ice/inert_sep:0
+sw_itemvoid:
+sw_itemvoid: *** Next : Climb
+sw_continue:CLIMB
+
+sw_checklist:CLIMB:Climb
+sw_itemvoid:*** CLIMB SPEED 124 KIAS
+sw_itemvoid:*** NOT EXCEED 100% TORQUE
+sw_itemvoid:*** NOT EXCEED 104% NG.
+sw_itemvoid:*** NOT EXCEED 840°C ITT
+sw_itemvoid:
+sw_item:Throttle ADJUST|ADJUST:sim/flightmodel2/engines/throttle_used_ratio[0]:><0.01
+sw_itemvoid:*** CLIMB SPEED|124 KIAS
+sw_itemvoid:
+sw_item:Cabin climb rate|CHECK <800 FT/MIN:sim/cockpit/pressure/cabin_pressure_differential_psi:<800
+sw_itemvoid:
+sw_itemvoid:*** PASSING ABOVE TRANSITION ALT
+sw_item:- G1000 altimeter STANDARD|SET 29.92:sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot:29.92 
+sw_item:- ESI altimeter STANDARD|SET 29.92:tbm900/esi2000/softkey1:1
+sw_itemvoid:
+sw_item:Annunciators / Eng.Instr. / Breakers|CHECK
+sw_itemvoid:
+sw_itemvoid:*** IN RAINING, SNOWING OR ICING COND.
+sw_itemvoid:      => INERT SEP|ON
+sw_itemvoid:      => IGINITION switch|ON
+sw_itemvoid:*** AND IF REQUIRED (SNOW or ICING)
+sw_itemvoid:      => Alternate air|OPEN
+sw_itemvoid:      => Deice system|SET
+sw_itemvoid:      => Alternate static source|SWITCH
+sw_itemvoid:
+sw_itemvoid: **** Next : Cruise
+
+sw_checklist:CRUISE:Cruise
+sw_itemvoid:*** ALT MAX FL310
+sw_itemvoid:
+sw_item:Throttle|ADJUST:sim/flightmodel2/engines/throttle_used_ratio[0]:><0.01
+sw_itemvoid:
+sw_item:Pressurization|GREEN RANGE:(sim/cockpit2/pressurization/indicators/cabin_vvi_fpm:-50|50)&&(sim/cockpit2/pressurization/indicators/pressure_diffential_psi:0)
+sw_item:Fuel|CHECK:(sim/cockpit2/fuel/fuel_quantity[0]:>100)&&(sim/cockpit2/fuel/fuel_quantity[1]:>100)
+sw_itemvoid:
+sw_item:Annunciators / Eng.Instr. / Breakers|CHECK
+sw_itemvoid:
+sw_itemvoid:*** IN RAINING, SNOWING OR ICING COND.
+sw_itemvoid:      => INERT SEP|ON
+sw_itemvoid:      => IGNITION switch|ON
+sw_itemvoid:*** AND IF REQUIRED (SNOW or ICING)
+sw_itemvoid:      => Alternate air|OPEN
+sw_itemvoid:      => Deice system|SET
+sw_itemvoid:      => Alternate static source|SWITCH
+sw_itemvoid:
+sw_itemvoid: **** Next : Descent
+
+sw_checklist:DESCENT:Descent
+sw_item:Throttle|ADJUST:sim/flightmodel2/engines/throttle_used_ratio[0]:><0.01
+sw_itemvoid:
+sw_item:Pressurization|GREEN RANGE:(sim/cockpit2/pressurization/indicators/cabin_vvi_fpm:-3000|0)&&(sim/cockpit2/pressurization/indicators/pressure_diffential_psi:0)
+sw_item:Fuel|CHECK:(sim/cockpit2/fuel/fuel_quantity[0]:>100)&&(sim/cockpit2/fuel/fuel_quantity[1]:>100)
+sw_itemvoid:
+sw_itemvoid:*** PASSING BELOW TRANSITION ALT
+sw_item:G1000 altimeter|SET QNH:sim/cockpit2/gauges/actuators/barometer_setting_in_hg_pilot:><0.01
+sw_item:... & ESI altimeter|SET QNH:(tbm900/esi2000/softkey2:!0)||(tbm900/esi2000/softkey3:!0)
+sw_itemvoid:
+sw_item:Annunciators / Eng.Instr. / Breakers|CHECK
+sw_itemvoid:
+sw_itemvoid:*** IN RAINING, SNOWING OR ICING COND.
+sw_itemvoid:      => INERT SEP|ON
+sw_itemvoid:      => IGNITION switch|ON
+sw_itemvoid:*** AND IF REQUIRED (SNOW or ICING)
+sw_itemvoid:      => Alternate air|OPEN
+sw_itemvoid:      => Deice system|SET
+sw_itemvoid:      => Alternate static source|SWITCH
+sw_itemvoid:
+sw_itemvoid: **** Next : Approach
+
+sw_checklist:APPROACH:Approach
+sw_itemvoid:*** INITIAL APPROACH SPEED 160 KIAS, 50% TORQUE
+sw_itemvoid:
+sw_item:Radar mode softkey (MFD)|OFF
+sw_itemvoid:
+sw_item:Throttle 30% TORQUE ON GLIDESLOPE|ADJUST:sim/flightmodel2/engines/throttle_used_ratio[0]:><0.01
+sw_itemvoid:
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_item:FUEL SELECTOR MANUALl|FUEL SELECT MANUAL:tbm900/switches/fuel/auto_man:1 
+sw_item:Fuel tank selector|FULLEST TANK:tbm900/switches/fuel/fuel_sel:><0.01
+sw_itemvoid:LANDING light switch ON|LANDING LIGHTS ON:sim/cockpit/electrical/landing_lights_on:1
+
+sw_itemvoid:
+sw_itemvoid: **** Next : Before landing
+sw_continue:BEFORE LANDING
+
+sw_checklist:BEFORE LANDING:Before landing
+sw_itemvoid:*** GLIDESLOPE INTERCEPT REDUCE TORQUE to 30%
+sw_itemvoid:*** GLIDESLOPE INTERCEPT FLAPS 1 and GEAR DOWN
+sw_itemvoid:*** 1000 AGL, FLAPS FULL
+sw_itemvoid:*** BEFORE LANDING SPEED 95-100 KIAS
+sw_itemvoid:
+sw_item:ADJUST Throttle for 90 KIAS|ADJUST:sim/flightmodel2/engines/throttle_used_ratio[0]:><0.01
+sw_itemvoid:
+sw_item:Yaw damperOFF|YAW DAMPER OFF:sim/cockpit2/switches/yaw_damper_on:0
+sw_item:Landing gear DOWN <178 KNOTS|DOWN-3 GREEN:tbm900/switches/gear/handle:1
+sw_itemvoid:
+sw_itemvoid:*** BELOW 1500 FT/AGL
+sw_item:INERT SEP switch ON|ON:tbm900/switches/ice/inert_sep:1
+sw_itemvoid:
+sw_item:FULL Flaps <122 KNOTSOR 1000 AGL|LDG:sim/flightmodel/controls/wing1r_fla1def:35.0
+sw_itemvoid:
+sw_itemvoid: **** Next : Landing
+sw_continue:LANDING
+
+sw_checklist:LANDING:Landing
+sw_itemvoid:*** LANDING SPEED (FULL FLAPS) 85 KIAS
+sw_itemvoid:*** TOUCHDOWN SPEED (FULL FLAPS) 70 KIAS
+sw_itemvoid:
+sw_item:[ATC] REQUEST LANDING|REQUEST
+sw_itemvoid:
+sw_item:REMOVE Headset equipment|REMOVE:tbm900/sound/headset_on:0
+sw_itemvoid:
+sw_item:CHECK Parking brake NOT SET|CHECK RELEASE:tbm900/switches/gear/park_brake:0
+sw_itemvoid:
+sw_item:Autopilot OFF <200 ft/AGL|OFF:sim/cockpit/autopilot/autopilot_mode:<2
+sw_itemvoid:
+sw_item:Land|TOUCH DOWN:sim/flightmodel2/gear/on_ground[0]:1.0
+sw_itemvoid:
+sw_itemvoid: **** Next : After Landing
+sw_continue:AFTER LANDING
+
+sw_checklist:AFTER LANDING:After Landing
+sw_item:Throttle REVERSE (above 40 kias)|REVERSE:tbm900/systems/engine/range:5
+sw_item:Flaps UP|UP:sim/flightmodel/controls/wing1r_fla1def:0.0
+sw_itemvoid:
+sw_itemvoid:*** Clear Runway|GO
+sw_item:EXIT and set parking brake|PARKING BRAKE SET:tbm900/switches/gear/park_brake:1
+sw_itemvoid:
+sw_itemvoid: **** Next : Clear Runway
+sw_continue:CLEAR RUNWAY
+
+sw_checklist:CLEAR RUNWAY:Clear Runway
+sw_item:TAXI light ON|ON:(sim/cockpit/electrical/taxi_light_on:1)&&(sim/cockpit/electrical/landing_lights_on:0)
+sw_item:STROBE light OFF|OFF:sim/cockpit2/switches/strobe_lights_on:0
+sw_item:Flight director OFF|OFF:sim/cockpit/autopilot/autopilot_mode:0
+sw_item:Transponder STANDBY|STANDBY:sim/cockpit/radios/transponder_mode:1
+sw_itemvoid:
+sw_itemvoid:*** ON DE-ICE PANEL
+sw_item:All  switches|DOWN:(tbm900/switches/ice/airframe_deice:0)&&(tbm900/switches/ice/ice_lights:0)&&(tbm900/switches/ice/prop_deice:0)&&(tbm900/switches/ice/ws_heat:0)&&(tbm900/switches/ice/pitot_l:0)&&(tbm900/switches/ice/pitot_r:0)
+sw_item:... except INERTIAL SEPARATOR|SEPARATOR ON:tbm900/switches/ice/inert_sep:1
+sw_itemvoid:
+sw_item:All trims TAKEOFF POSITION| TRIMS TAKEOFF POSITION:sim/cockpit2/controls/elevator_trim:><0.01
+sw_itemvoid:
+sw_item:Release Parking brake| BRAKE RELEASE:tbm900/switches/gear/park_brake:0
+sw_itemvoid:*** Goto  parking|GO
+sw_item:    ... and set parking brake|SET:tbm900/switches/gear/park_brake:1
+sw_itemvoid:
+sw_itemvoid: **** Next : Shutdown-1
+sw_continue:SHUTDOWN-1
+
+sw_checklist:SHUTDOWN-1:Shutdown
+sw_itemvoid:*** ON ECS PANEL
+sw_item:A/C switch|OFF:tbm900/switches/ecs/ac_mode:0
+sw_item:BLEED switch|OFF/RST:tbm900/switches/ecs/bleed_mode:0
+sw_itemvoid:
+sw_item:Start timer on PFD|START:sim/time/timer_is_running_sec:1
+sw_item:Throttle|FLIGHT IDDLE 2 MIN:tbm900/systems/engine/range:3
+sw_item:... then throttle|LOW IDLE 15 SEC:tbm900/systems/engine/range:1
+sw_item:... then throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_item:Reset and stop timer|RESET & STOP:sim/time/timer_is_running_sec:0
+sw_itemvoid:
+sw_item:Fuel tank selector|OFF:tbm900/switches/fuel/fuel_sel:0
+sw_item:INERT SEP switch|OFF:tbm900/switches/ice/inert_sep:0
+sw_itemvoid:
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_item:EXT LIGHTS panel|ALL OFF:(tbm900/switches/lights/landing_lights:0)&&(tbm900/switches/lights/pulse_syst:0)&&(sim/cockpit2/switches/navigation_lights_on:0)&&(sim/cockpit2/switches/strobe_lights_on:0)
+sw_item:INT LIGHTS panel|ALL OFF:(tbm900/switches/lights/dimmer:0)&&(tbm900/switches/lights/cabin_lights:0)
+sw_item:AUX BP switch|OFF:tbm900/switches/fuel/aux_bp:0
+sw_item:FUEL SEL switch|MAN:tbm900/switches/fuel/auto_man:1
+sw_item:Pilot OXYGEN switch|OFF:tbm900/switches/oxygen/master:0
+sw_item:PASSENGER OXYGEN switch|OFF:tbm900/switches/oxygen/pax:0
+sw_itemvoid:
+sw_item:Set chocks|SET:tbm900/switches/gear/chocks:1
+sw_item:... Parking brake|RELEASE:tbm900/switches/gear/park_brake:0
+sw_itemvoid:
+sw_itemvoid: **** Next : Shutdown-2
+sw_continue:SHUTDOWN-2
+
+sw_checklist:SHUTDOWN-2
+sw_itemvoid:*** ON OVERHEAD PANEL
+sw_item:GENERATOR switch|OFF:tbm900/switches/elec/generator:0
+sw_item:SOURCE selector switch|OFF:tbm900/switches/elec/source:0
+sw_item:Crash lever|DOWN:tbm900/switches/elec/emerg_handle:1
+sw_item:INT LIGHTS dim panel|OFF:tbm900/knobs/lights/panel_brt:>0.89
+sw_itemvoid:
+sw_itemvoid:*** ON DE-ICE PANEL
+sw_item:All switches|DOWN:(tbm900/switches/ice/airframe_deice:0)&&(tbm900/switches/ice/ice_lights:0)&&(tbm900/switches/ice/prop_deice:0)&&(tbm900/switches/ice/ws_heat:0)&&(tbm900/switches/ice/pitot_l:0)&&(tbm900/switches/ice/pitot_r:0)&&(tbm900/switches/ice/inert_sep:0)
+sw_itemvoid:
+sw_item:Open all doors|OPEN:(tbm900/doors/front_cargo:1)&&(tbm900/doors/pilot:>0.5)&&(tbm900/doors/main:>0.5)
+sw_itemvoid:
+sw_item:*** Empty aircraft ***|EMPTY:sim/flightmodel/weight/m_total:><0.01
+sw_item:Set all protections|SET:(tbm900/anim/engine/tied:1)&&(tbm900/anim/wing/wingtip_wick_flag[0]:1)&&(tbm900/anim/wing/pitot_cover[0]:1)&&(tbm900/anim/tail/static_cover[0]:1)
+sw_itemvoid:
+sw_item:Close all doors|CLOSE:(tbm900/doors/front_cargo:0)&&(tbm900/doors/pilot:0)&&(tbm900/doors/main:0)
+sw_itemvoid:===============
+sw_itemvoid:It's time for coffee, bye...
+sw_itemvoid:===============
+
+sw_checklist:SPECIAL & EMERGENCY PROCEDURES:-----------------------------------------------------------------------
+
+sw_checklist:SPECIAL - ENGINE MOTORING:SPECIAL - Engine motoring
+sw_item:Throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_item:MAN OVERD (fuel)|BACKWARD:tbm900/controls/engine/emerg_power:0
+sw_item:Fuel tank selector|LEFT OR RIGHT:(tbm900/switches/fuel/fuel_sel:1)||(tbm900/switches/fuel/fuel_sel:2)
+sw_item:AUX BP switch|ON:tbm900/switches/fuel/aux_bp:1
+sw_item:IGNITION switch|OFF:tbm900/switches/elec/ignition:0
+sw_itemvoid:
+sw_itemvoid:*** TO CLEAR FUEL AND VAPOR INTERNALLY TRAPPED
+sw_item:STARTER switch|ON MAX 15 SEC:tbm900/switches/elec/starter:1
+sw_item:STARTER switch|ABORT:tbm900/switches/elec/starter:-1
+sw_item:AUX BP switch|OFF:tbm900/switches/fuel/aux_bp:0
+sw_item:IGNITION switch|AUTO:tbm900/switches/elec/ignition:2
+sw_itemvoid: 
+sw_itemvoid: *** Next: Pre-start configuration
+sw_continue:PRE-START CONFIGURATION
+
+sw_checklist:SPECIAL - COOL ENGINE BEFORE START:SPECIAL - Cool engine before start
+sw_item:Throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_item:MAN OVERD (fuel)|BACKWARD:tbm900/controls/engine/emerg_power:0
+sw_item:Fuel tank selector|LEFT OR RIGHT:(tbm900/switches/fuel/fuel_sel:1)||(tbm900/switches/fuel/fuel_sel:2)
+sw_item:AUX BP switch|ON:tbm900/switches/fuel/aux_bp:1
+sw_item:IGNITION switch|OFF:tbm900/switches/elec/ignition:0
+sw_itemvoid:
+sw_itemvoid:*** TO COOL ENGINE BEFORE START (ITT)
+sw_item:STARTER switch|ON MAX 30 SEC:tbm900/switches/elec/starter:1
+sw_item:STARTER switch|ABORT:tbm900/switches/elec/starter:-1
+sw_item:AUX BP switch|OFF:tbm900/switches/fuel/aux_bp:0
+sw_item:IGNITION switch|AUTO:tbm900/switches/elec/ignition:2
+sw_itemvoid:
+sw_itemvoid: *** Next: Pre-start configuration
+sw_continue:PRE-START CONFIGURATION
+
+sw_checklist:SPECIAL - USE ON RUNWAYS COVERED WITH WATER:SPECIAL - Use one runway covered with water
+sw_rcolsize:400
+sw_item:IGNITION switch|ON:tbm900/switches/elec/ignition:1
+sw_item:INERT SEP switch|ON:tbm900/switches/ice/inert_sep:1
+
+sw_checklist:EMERGENCY - ENGINE FIRE ON GROUND:EMERGENCY - Engine fire on ground
+sw_item:Throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_itemvoid:
+sw_itemvoid:*** ECS PANEL
+sw_item:A/C switch|OFF:tbm900/switches/ecs/ac_mode:0
+sw_item:BLEED switch|OFF/RST:tbm900/switches/ecs/bleed_mode:0
+sw_itemvoid:
+sw_item:Parking brake|SET:tbm900/switches/gear/park_brake:1
+sw_item:Fuel tank selector|OFF:tbm900/switches/fuel/fuel_sel:0
+sw_item:Crash lever|DOWN:tbm900/switches/elec/emerg_handle:1
+sw_itemvoid:  => EVACUATE AIRCRAFT
+
+sw_checklist:EMERGENCY - ENGINE FIRE IN FLIGHT:EMERGENCY - Engine fire in flight
+sw_item:Throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_item:Fuel tank selector|OFF:tbm900/switches/fuel/fuel_sel:0
+sw_itemvoid:
+sw_itemvoid:*** OVERHEAD PANEL
+sw_item:AUX BP switch|OFF:tbm900/switches/fuel/aux_bp:0
+sw_item:PASSENGER OXYGEN switch|ON:tbm900/switches/oxygen/pax:1
+sw_item:Pilot oxygen mask|SET:(tbm900/anim/oxymask/pull_down[0]:1)||(tbm900/anim/oxymask/pull_down[1]:1)
+sw_itemvoid:
+sw_itemvoid:*** ECS PANEL
+sw_item:A/C switch|OFF:tbm900/switches/ecs/ac_mode:0
+sw_item:BLEED switch|OFF/RST:tbm900/switches/ecs/bleed_mode:0
+sw_itemvoid:  => PERFORM A FORCED LANDING
+
+sw_checklist:EMERGENCY - MAXIMUM RATE DESCENT:EMERGENCY - Maximum rate descent
+sw_item:Throttle|FLIGHT IDDLE:tbm900/systems/engine/range:3
+sw_itemvoid:
+sw_itemvoid:*** OVERHEAD PANEL
+sw_item:PASSENGER OXYGEN switch|ON:tbm900/switches/oxygen/pax:1
+sw_item:Pilot oxygen mask|SET:(tbm900/anim/oxymask/pull_down[0]:1)||(tbm900/anim/oxymask/pull_down[1]:1)
+sw_itemvoid:
+sw_item:Descent attitude|-10 -20 deg:sim/cockpit2/gauges/indicators/pitch_AHARS_deg_pilot:-20|-10
+sw_item:Reduce speed|<178 KIAS:sim/flightmodel/position/indicated_airspeed:<178
+sw_item:Landing gear|DOWN-3 GREEN:tbm900/switches/gear/handle:1
+sw_item:Flaps|UP:sim/flightmodel/controls/wing1r_fla1def:0
+sw_itemvoid:  => MAINTAIN SPEED < 178 KIAS
+
+sw_checklist:EMERGENCY - FORCED LANDING:EMERGENCY - Forced landing
+sw_item:Throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_item:Fuel tank selector|OFF:tbm900/switches/fuel/fuel_sel:0
+sw_itemvoid:
+sw_itemvoid:*** OVERHEAD PANEL
+sw_item:AUX BP switch|OFF:tbm900/switches/fuel/aux_bp:0
+sw_itemvoid:
+sw_itemvoid:*** ECS PANEL
+sw_item:A/C switch|OFF:tbm900/switches/ecs/ac_mode:0
+sw_item:BLEED switch|OFF/RST:tbm900/switches/ecs/bleed_mode:0
+sw_itemvoid:
+sw_itemvoid:*** FLY AT GLIDE SPEED
+sw_item:Glide speed|120 KIAS:sim/flightmodel/position/indicated_airspeed:110|130
+sw_itemvoid:
+sw_item:LDG light switch|ON:sim/cockpit/electrical/landing_lights_on:1
+sw_item:Landing gear|KEEP UP:tbm900/switches/gear/handle:0
+sw_itemvoid:
+sw_itemvoid:*** WHEN CHOSEN GROUND LANDING ZONE
+sw_item:Flaps <122 kias|LDG:sim/flightmodel/controls/wing1r_fla1def:35.0
+sw_item:Crash lever|DOWN:tbm900/switches/elec/emerg_handle:1
+sw_item:Landing gear|DOWN - 3 GREEN:tbm900/switches/gear/handle:1
+sw_itemvoid:
+sw_item:Land flaring out|LAND:sim/flightmodel2/gear/on_ground[0]:1.0
+sw_item:Parking brake|SET:tbm900/switches/gear/park_brake:1
+sw_itemvoid:  => EVACUATE
+
+sw_checklist:EMERGENCY - LANDING WITH GEAR UP:EMERGENCY - Landing with gear up
+sw_itemvoid:*** MAKE STANDARD FINAL APPROACH
+sw_item:Flaps <122 kias|LDG:sim/flightmodel/controls/wing1r_fla1def:35.0
+sw_item:Speed|85 KIAS:sim/flightmodel/position/indicated_airspeed:75|95
+sw_itemvoid:
+sw_itemvoid:*** ECS PANEL
+sw_item:BLEED switch|OFF/RST:tbm900/switches/ecs/bleed_mode:0
+sw_itemvoid:
+sw_itemvoid:*** WHEN RUNWAY IS ASSURED
+sw_item:Throttle|CUT-OFF:tbm900/systems/engine/range:0
+sw_item:Fuel tank selector|OFF:tbm900/switches/fuel/fuel_sel:0
+sw_itemvoid:
+sw_item:Land flaring out|LAND:sim/flightmodel2/gear/on_ground[0]:1.0
+sw_item:Crash lever|DOWN:tbm900/switches/elec/emerg_handle:1
+sw_itemvoid:  => EVACUATE
+
+sw_checklist:EMERGENCY - EMERGENCY LANDING GEAR EXTENSION:EMERGENCY - Emergency landing gear extension
+sw_itemvoid:*** MAINTAIN SPEED <150 KIAS
+sw_item:Speed|<150 KIAS:sim/flightmodel/position/indicated_airspeed:<150
+sw_item:Landing gear lever|DOWN:tbm900/switches/gear/handle:1
+sw_item:LDG GEAR circuit breaker (up & right)|PULL:tbm900/cbs/CB_LDG_GEAR:1
+sw_itemvoid:
+sw_itemvoid:*** ON THE FLOOR BELOW THE PEDESTRAL
+sw_item:Floor hatch|OPEN:tbm900/anim/gear/man_pump_cover:1
+sw_item:By-pass selector|FULLY PULL / LOCKED:tbm900/switches/gear/pump_bypass:1
+sw_item:Hand pump|ACTUATE:tbm900/switches/gear/man_pump:1
