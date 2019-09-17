@@ -396,7 +396,7 @@ sw_itemvoid:
 sw_itemvoid:*** ON OVERHEAD PANEL
 sw_item:FUEL SELECTOR MANUALl|FUEL SELECT MANUAL:tbm900/switches/fuel/auto_man:1 
 sw_item:Fuel tank selector|FULLEST TANK:tbm900/switches/fuel/fuel_sel:><0.01
-sw_itemvoid:LANDING light switch ON|LANDING LIGHTS ON:sim/cockpit/electrical/landing_lights_on:1
+sw_item:LANDING light switch ON|LANDING LIGHTS ON:sim/cockpit/electrical/landing_lights_on:1
 
 sw_itemvoid:
 sw_itemvoid: **** Next : Before landing
