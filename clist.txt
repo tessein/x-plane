@@ -60,11 +60,11 @@ sw_itemvoid:
 sw_itemvoid: *** Next: Establishing Electrical Power
 sw_continue:ESTABLISHING ELECTRICAL POWER
 
-sw_checklist:ESTABLISHING ELECTRICAL POWER:Establishing Electrical Power
+sw_checklist:ESTABLISH ELECTRICAL POWER:Establish Electrical Power
 sw_itemvoid:*** ON OVERHEAD PANEL
-sw_item:Crash lever UP|LEVER UP:tbm900/switches/elec/emerg_handle:0
-sw_item:SOURCE selector switch GPU|SOURCE SELECTOR GPU:tbm900/switches/elec/source:2
-sw_item:GENERATOR switch MAIN|MAIN:tbm900/switches/elec/generator:1
+sw_item:Crash lever UP|CRASH LEVER UP:tbm900/switches/elec/emerg_handle:0
+sw_item:SOURCE selector switch GPU|SOURCE SELECTOR GROUND POWER UNIT:tbm900/switches/elec/source:2
+sw_item:GENERATOR switch MAIN|GENERATOR MAIN:tbm900/switches/elec/generator:1
 sw_item:INTERIOR LIGHTS dim panel|ADJUST:tbm900/knobs/lights/panel_brt:><0.01
 sw_itemvoid:
 sw_item:*** CHECK CREW ALERTING SYSTEM MESSAGES ON MFD|CHECK
@@ -72,13 +72,17 @@ sw_itemvoid:- Park brake, Fuel press & Oil press|RED
 sw_itemvoid:- GPU door, Auto sel, Vacuum low|YELLOW
 sw_item:Battery > 24.5 VOLTS|BATTERY OK:sim/cockpit2/electrical/battery_voltage_indicated_volts[0]:>24.5
 sw_itemvoid:
+sw_itemvoid:*** FILE FLIGHT PLAN WITH VATSIM
+sw_itemvoid:*** FILE FLIGHTPLAN WITH projectFLY
+sw_itemvoid:*** START projectFLY flight
+sw_itemvoid:
 sw_item:[ATC] FILE FLIGHT PLAN|PLAN FILED
 sw_itemvoid:
 sw_itemvoid:*** LANDING GEAR PANEL 
 sw_item:CHECK DOWN & LIGHT push-button|PUSH & TEST:(tbm900/switches/gear/lts_test:1)||(tbm900/switches/gear/down_check:1)
 sw_itemvoid:
 sw_itemvoid:*** DE-ICE PANEL 
-sw_item:LTS TEST push-button|PUSH & TEST:tbm900/switches/ice/lts_test:1
+sw_item:LTS TEST push-button|LTS PUSH AND TEST:tbm900/switches/ice/lts_test:1
 sw_itemvoid:
 sw_itemvoid: *** Next: Pre-start configuration
 sw_continue:PRE-START CONFIGURATION
